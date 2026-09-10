@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Zubair | Laravel & Full‑Stack Developer — Portfolio</title>
+    <meta name="description" content="Zubair — Laravel & Full-Stack Developer Portfolio. Building clean, scalable and SEO-friendly web solutions.">
+
+    <!-- ============ FAVICON (Chrome tab icon) ============ -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232563eb'/%3E%3Cstop offset='50%25' stop-color='%233b82f6'/%3E%3Cstop offset='100%25' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='72' font-family='Poppins,Arial,sans-serif' font-size='62' font-weight='700' fill='white' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232563eb'/%3E%3Cstop offset='50%25' stop-color='%233b82f6'/%3E%3Cstop offset='100%25' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='72' font-family='Poppins,Arial,sans-serif' font-size='62' font-weight='700' fill='white' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -628,50 +634,84 @@
         }
         .project-card:hover .view-detail { gap: 10px; }
 
-        /* ---------- MODAL ---------- */
+        /* ============================================================
+           MODAL — fully responsive on mobile
+           ============================================================ */
         .modal {
             display: none;
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(8px);
+            background: rgba(15,23,42,0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             z-index: 1000;
             justify-content: center;
             align-items: center;
             padding: 1rem;
-        }
-        .modal-content {
-            background: white;
-            max-width: 520px;
-            width: 100%;
-            border-radius: 28px;
-            padding: 1.8rem;
-            position: relative;
-            animation: modalPop 0.3s ease;
-            border-top: 4px solid #3b82f6;
-            max-height: 90vh;
             overflow-y: auto;
         }
-        @keyframes modalPop {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+        .modal.active { display: flex; }
+
+        .modal-content {
+            background: white;
+            max-width: 560px;
+            width: 100%;
+            border-radius: 24px;
+            padding: 2rem;
+            position: relative;
+            animation: modalPop 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+            border-top: 4px solid;
+            border-image: linear-gradient(90deg, #2563eb, #7c3aed) 1;
+            max-height: calc(100vh - 2rem);
+            overflow-y: auto;
+            box-shadow: 0 30px 60px -20px rgba(15,23,42,0.5);
+            margin: auto;
         }
+        @keyframes modalPop {
+            from { transform: scale(0.92) translateY(20px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
         .close-modal {
             position: absolute;
-            top: 1rem; right: 1.2rem;
-            font-size: 1.8rem;
+            top: 1rem; right: 1rem;
+            font-size: 1.5rem;
             cursor: pointer;
             color: #64748b;
-            transition: 0.2s;
+            transition: all 0.25s;
             line-height: 1;
-            width: 36px; height: 36px;
+            width: 38px; height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            background: #f1f5f9;
+            border: none;
+            z-index: 2;
+            flex-shrink: 0;
         }
-        .close-modal:hover { color: #ef4444; background: #fef2f2; }
+        .close-modal:hover { color: #ef4444; background: #fee2e2; transform: rotate(90deg); }
+
+        .modal-content h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            padding-right: 3rem;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+            line-height: 1.3;
+            word-break: break-word;
+        }
+        .modal-content #modalDescription {
+            margin: 0.8rem 0;
+            color: #334155;
+            font-size: 0.92rem;
+            line-height: 1.65;
+            word-break: break-word;
+        }
+        .modal-content #modalDescription strong { color: #1e40af; }
         .modal-tech {
             display: flex;
             flex-wrap: wrap;
@@ -680,10 +720,18 @@
         }
         .modal-tech span {
             background: #eef2ff;
-            padding: 0.25rem 0.9rem;
+            padding: 0.3rem 0.9rem;
             border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 500;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #1e40af;
+            border: 1px solid rgba(59,130,246,0.15);
+        }
+        .modal-content #modalFullDetail {
+            color: #475569;
+            line-height: 1.7;
+            font-size: 0.92rem;
+            word-break: break-word;
         }
 
         /* ---------- TESTIMONIALS SLIDER ---------- */
@@ -855,7 +903,7 @@
         .whatsapp-float:hover { transform: scale(1.08); background: #20b859; }
 
         /* ============================================================
-           FOOTER — completely redesigned, premium look
+           FOOTER
            ============================================================ */
         footer {
             background: #0a0f1e;
@@ -865,8 +913,6 @@
             overflow: hidden;
             margin-top: 0;
         }
-
-        /* Decorative top glow */
         footer::before {
             content: '';
             position: absolute;
@@ -879,8 +925,6 @@
             pointer-events: none;
             z-index: 0;
         }
-
-        /* Grid pattern overlay */
         footer::after {
             content: '';
             position: absolute;
@@ -901,7 +945,6 @@
             padding-top: 4rem;
         }
 
-        /* ---------- CTA Banner inside Footer ---------- */
         .footer-cta {
             background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(124,58,237,0.12));
             border: 1px solid rgba(59,130,246,0.25);
@@ -962,7 +1005,6 @@
         }
         .footer-cta-btn i { font-size: 1.05rem; }
 
-        /* ---------- Main Footer Grid ---------- */
         .footer-grid {
             display: grid;
             grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
@@ -970,7 +1012,6 @@
             padding-bottom: 3rem;
         }
 
-        /* Brand column */
         .footer-brand-col .footer-brand {
             font-family: 'Poppins', sans-serif;
             font-size: 1.8rem;
@@ -1015,7 +1056,6 @@
             50% { opacity: 0.5; transform: scale(0.85); }
         }
 
-        /* Link columns */
         .footer-col h4 {
             color: #fff;
             font-family: 'Poppins', sans-serif;
@@ -1067,7 +1107,6 @@
             transform: translateX(2px);
         }
 
-        /* Contact column */
         .footer-contact {
             list-style: none;
             display: flex;
@@ -1127,7 +1166,6 @@
         }
         .footer-contact li .contact-text a:hover { color: #60a5fa; }
 
-        /* Social icons */
         .footer-socials {
             display: flex;
             gap: 0.6rem;
@@ -1135,6 +1173,7 @@
             flex-wrap: wrap;
         }
         .footer-socials a {
+            text-decoration: none;
             width: 40px;
             height: 40px;
             border-radius: 12px;
@@ -1168,7 +1207,6 @@
         }
         .footer-socials a:hover::before { opacity: 1; }
 
-        /* ---------- Footer Bottom ---------- */
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.06);
             padding: 1.6rem 0;
@@ -1283,6 +1321,35 @@
             .project-card { padding: 1.3rem; }
             .project-card h3 { font-size: 1.15rem; }
 
+            /* ============ MODAL MOBILE FIX ============ */
+            .modal {
+                padding: 0.75rem;
+                align-items: center;
+            }
+            .modal-content {
+                padding: 1.6rem 1.3rem;
+                border-radius: 20px;
+                max-height: calc(100vh - 1.5rem);
+                width: 100%;
+                max-width: 100%;
+            }
+            .modal-content h2 {
+                font-size: 1.15rem;
+                padding-right: 2.8rem;
+                line-height: 1.35;
+            }
+            .close-modal {
+                top: 0.7rem; right: 0.7rem;
+                font-size: 1.4rem;
+                width: 34px; height: 34px;
+            }
+            .modal-content #modalDescription,
+            .modal-content #modalFullDetail {
+                font-size: 0.85rem;
+                line-height: 1.65;
+            }
+            .modal-tech span { font-size: 0.68rem; padding: 0.25rem 0.75rem; }
+
             .testimonial-card { width: 280px; padding: 1.3rem; }
             .testimonial-track { animation-duration: 30s; }
 
@@ -1297,14 +1364,10 @@
                 bottom: 16px; right: 16px;
             }
 
-            .modal-content { padding: 1.5rem; border-radius: 24px; }
-            .close-modal { top: 0.7rem; right: 0.9rem; font-size: 1.6rem; width: 32px; height: 32px; }
-
             .project-card:hover { transform: translateY(-4px); }
 
-            /* ================ FOOTER TABLET/MOBILE ================ */
+            /* FOOTER TABLET/MOBILE */
             .footer-inner { padding-top: 3rem; }
-
             .footer-cta {
                 flex-direction: column;
                 text-align: center;
@@ -1326,9 +1389,7 @@
                 gap: 2rem 1.5rem;
                 padding-bottom: 2.5rem;
             }
-            .footer-grid .footer-brand-col {
-                grid-column: span 2;
-            }
+            .footer-grid .footer-brand-col { grid-column: span 2; }
             .footer-brand-col .footer-about {
                 max-width: 100%;
                 font-size: 0.83rem;
@@ -1342,24 +1403,11 @@
             .footer-links { gap: 0.6rem; }
             .footer-links a { font-size: 0.82rem; }
 
-            /* Contact column spans full width on tablet/mobile */
-            .footer-col-contact {
-                grid-column: span 2;
-            }
-            .footer-contact {
-                gap: 0.9rem;
-            }
-            .footer-contact li {
-                font-size: 0.83rem;
-            }
-            .footer-socials {
-                margin-top: 1.2rem;
-                gap: 0.55rem;
-            }
-            .footer-socials a {
-                width: 38px; height: 38px;
-                font-size: 0.9rem;
-            }
+            .footer-col-contact { grid-column: span 2; }
+            .footer-contact { gap: 0.9rem; }
+            .footer-contact li { font-size: 0.83rem; }
+            .footer-socials { margin-top: 1.2rem; gap: 0.55rem; }
+            .footer-socials a { width: 38px; height: 38px; font-size: 0.9rem; }
 
             .footer-bottom {
                 flex-direction: column;
@@ -1389,6 +1437,28 @@
             .project-card p { font-size: 0.85rem; }
             .live-btn { padding: 0.5rem 1rem; font-size: 0.75rem; }
             .view-detail { font-size: 0.75rem; }
+
+            /* ============ MODAL SMALL MOBILE ============ */
+            .modal { padding: 0.5rem; }
+            .modal-content {
+                padding: 1.4rem 1.1rem;
+                border-radius: 18px;
+                max-height: calc(100vh - 1rem);
+            }
+            .modal-content h2 {
+                font-size: 1.05rem;
+                padding-right: 2.6rem;
+            }
+            .modal-content #modalDescription,
+            .modal-content #modalFullDetail {
+                font-size: 0.82rem;
+            }
+            .close-modal {
+                top: 0.6rem; right: 0.6rem;
+                font-size: 1.25rem;
+                width: 32px; height: 32px;
+            }
+
             .testimonial-card { width: 250px; padding: 1.1rem; }
             .testimonial-text { font-size: 0.85rem; }
             .client-avatar { width: 38px; height: 38px; font-size: 0.9rem; }
@@ -1400,9 +1470,8 @@
             .btn-primary[href*="wa.me"] { font-size: 0.8rem; padding: 0.7rem 1.4rem; }
             .whatsapp-float { width: 46px; height: 46px; font-size: 24px; bottom: 14px; right: 14px; }
 
-            /* ================ FOOTER SMALL MOBILE ================ */
+            /* FOOTER SMALL MOBILE */
             .footer-inner { padding-top: 2.5rem; }
-
             .footer-cta {
                 padding: 1.5rem 1.2rem;
                 margin-bottom: 2rem;
@@ -1410,19 +1479,14 @@
             }
             .footer-cta-text h3 { font-size: 1.05rem; }
             .footer-cta-text p { font-size: 0.78rem; }
-            .footer-cta-btn {
-                padding: 0.75rem 1.3rem;
-                font-size: 0.8rem;
-            }
+            .footer-cta-btn { padding: 0.75rem 1.3rem; font-size: 0.8rem; }
 
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 1.8rem 1rem;
                 padding-bottom: 2rem;
             }
-            .footer-grid .footer-brand-col {
-                grid-column: span 2;
-            }
+            .footer-grid .footer-brand-col { grid-column: span 2; }
             .footer-brand-col .footer-brand { font-size: 1.4rem; }
             .footer-brand-col .footer-about {
                 font-size: 0.78rem;
@@ -1438,15 +1502,10 @@
             }
             .footer-col h4::after { width: 26px; height: 2px; }
             .footer-links { gap: 0.55rem; }
-            .footer-links a {
-                font-size: 0.78rem;
-                gap: 8px;
-            }
+            .footer-links a { font-size: 0.78rem; gap: 8px; }
             .footer-links a i { font-size: 0.6rem; width: 10px; }
 
-            .footer-col-contact {
-                grid-column: span 2;
-            }
+            .footer-col-contact { grid-column: span 2; }
             .footer-contact { gap: 0.75rem; }
             .footer-contact li { gap: 10px; }
             .footer-contact li .contact-icon {
@@ -1466,20 +1525,17 @@
                 border-radius: 10px;
             }
 
-            .footer-bottom {
-                padding: 1.2rem 0;
-                gap: 0.8rem;
-            }
+            .footer-bottom { padding: 1.2rem 0; gap: 0.8rem; }
             .footer-bottom p { font-size: 0.7rem; line-height: 1.55; }
-            .back-to-top {
-                font-size: 0.72rem;
-                padding: 0.5rem 0.95rem;
-            }
+            .back-to-top { font-size: 0.72rem; padding: 0.5rem 0.95rem; }
         }
 
         @media (max-width: 360px) {
             .container { padding: 0 0.9rem; }
             .hero-text h1 { font-size: 1.55rem; }
+            .modal { padding: 0.4rem; }
+            .modal-content { padding: 1.2rem 1rem; }
+            .modal-content h2 { font-size: 1rem; }
             .footer-brand-col .footer-brand { font-size: 1.25rem; }
             .footer-links a,
             .footer-contact li .contact-text a,
@@ -1624,11 +1680,11 @@
 
     <div id="projectModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <button class="close-modal" aria-label="Close modal">&times;</button>
             <h2 id="modalTitle"></h2>
-            <div id="modalDescription" style="margin: 0.8rem 0; color: #334155; font-size: 0.9rem;"></div>
+            <div id="modalDescription"></div>
             <div class="modal-tech" id="modalTech"></div>
-            <p id="modalFullDetail" style="color: #475569; line-height: 1.6; font-size: 0.9rem;"></p>
+            <p id="modalFullDetail"></p>
         </div>
     </div>
 
@@ -1688,30 +1744,25 @@
         <div class="container" style="text-align: center;">
             <h2>📬 Let's Build Something Great</h2>
             <p>Ready to bring your idea to life? I have delivered 10+ projects and can help you too.</p>
-            <a href="https://wa.me/923001234567?text=Hello%20Zubair%2C%20I%27m%20interested%20in%20your%20full-stack%20services!" class="btn-primary" target="_blank" style="background:#25D366; gap:10px; margin-top:0.5rem;"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+            <a href="https://wa.me/923287120863?text=Hello%20Zubair%2C%20I%27m%20interested%20in%20your%20full-stack%20services!" class="btn-primary" target="_blank" style="background:#25D366; gap:10px; margin-top:0.5rem;"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
     </section>
 </main>
 
-<!-- ===================== NEW PREMIUM FOOTER ===================== -->
+<!-- FOOTER -->
 <footer>
     <div class="container footer-inner">
-
-        <!-- CTA Banner -->
         <div class="footer-cta reveal from-bottom" data-reveal>
             <div class="footer-cta-text">
                 <h3>Have a project in mind?</h3>
                 <p>Let's turn your idea into a fast, scalable, and beautiful web solution.</p>
             </div>
-            <a href="https://wa.me/923001234567?text=Hi%20Zubair%2C%20let%27s%20discuss%20a%20project!" class="footer-cta-btn" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/923287120863?text=Hi%20Zubair%2C%20let%27s%20discuss%20a%20project!" class="footer-cta-btn" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-whatsapp"></i> Start a Conversation
             </a>
         </div>
 
-        <!-- Main Grid -->
         <div class="footer-grid">
-
-            <!-- Brand Column -->
             <div class="footer-col footer-brand-col">
                 <div class="footer-brand">Zubair<span>.dev</span></div>
                 <p class="footer-about">
@@ -1722,7 +1773,6 @@
                 </div>
             </div>
 
-            <!-- Quick Links -->
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul class="footer-links">
@@ -1734,7 +1784,6 @@
                 </ul>
             </div>
 
-            <!-- Services -->
             <div class="footer-col">
                 <h4>Services</h4>
                 <ul class="footer-links">
@@ -1746,7 +1795,6 @@
                 </ul>
             </div>
 
-            <!-- Contact Column -->
             <div class="footer-col footer-col-contact">
                 <h4>Get in Touch</h4>
                 <ul class="footer-contact">
@@ -1761,7 +1809,7 @@
                         <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
                         <div class="contact-text">
                             <small>WhatsApp</small>
-                            <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer">+92 300 1234567</a>
+                            <a href="https://wa.me/923287120863" target="_blank" rel="noopener noreferrer">+92 328 7120863</a>
                         </div>
                     </li>
                     <li>
@@ -1781,16 +1829,13 @@
                 </ul>
 
                 <div class="footer-socials">
-                    <a href="#" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/Zubairishtiaq" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/muhammad-zubair-06a16533a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="Twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://wa.me/923287120863" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
-
         </div>
 
-        <!-- Footer Bottom -->
         <div class="footer-bottom">
             <p>© <span id="year"></span> <span>Zubair</span> Laravel & Full‑Stack Web Developer. All rights reserved.</p>
             <a href="#home" class="back-to-top">
@@ -1800,7 +1845,7 @@
     </div>
 </footer>
 
-<a href="https://wa.me/923001234567?text=Hi%20Zubair%2C%20I%20saw%20your%20portfolio%20and%20I'd%20like%20to%20collaborate!" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+<a href="https://wa.me/923287120863?text=Hi%20Zubair%2C%20I%20saw%20your%20portfolio%20and%20I'd%20like%20to%20collaborate!" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
 </a>
 
@@ -2007,6 +2052,9 @@
         });
     });
 
+    // ============================================================
+    // MODAL — with body scroll lock for mobile
+    // ============================================================
     const modal = document.getElementById('projectModal');
     const modalTitle = document.getElementById('modalTitle');
     const modalDescription = document.getElementById('modalDescription');
@@ -2014,28 +2062,56 @@
     const modalFullDetail = document.getElementById('modalFullDetail');
     const closeModal = document.querySelector('.close-modal');
 
+    function openProjectModal(projectKey) {
+        const data = projectDetails[projectKey];
+        if (!data) return;
+
+        modalTitle.textContent = data.title;
+        modalDescription.innerHTML = `<strong>Overview:</strong> ${data.description}`;
+        modalTech.innerHTML = data.tech.map(t => `<span>${t}</span>`).join('');
+        modalFullDetail.textContent = data.fullDetail;
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+    }
+
+    function closeModalFn() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+    }
+
+    // Attach click to each project card
     document.querySelectorAll('.project-card').forEach(card => {
         card.addEventListener('click', (e) => {
             if (e.target.closest('.live-btn')) return;
             const projectKey = card.getAttribute('data-project');
             if (projectKey && projectDetails[projectKey]) {
-                const data = projectDetails[projectKey];
-                modalTitle.textContent = data.title;
-                modalDescription.innerHTML = `<strong>Overview:</strong> ${data.description}`;
-                modalTech.innerHTML = data.tech.map(t => `<span>${t}</span>`).join('');
-                modalFullDetail.textContent = data.fullDetail;
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
+                openProjectModal(projectKey);
             }
         });
     });
 
-    function closeModalFn() {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-    }
+    // Close via X button
     closeModal.addEventListener('click', closeModalFn);
-    window.addEventListener('click', (e) => { if (e.target === modal) closeModalFn(); });
+
+    // Close on backdrop click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModalFn();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModalFn();
+        }
+    });
+
+    // Prevent body scroll while touching modal backdrop
+    modal.addEventListener('touchmove', (e) => {
+        if (e.target === modal) e.preventDefault();
+    }, { passive: false });
 
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(item => {
